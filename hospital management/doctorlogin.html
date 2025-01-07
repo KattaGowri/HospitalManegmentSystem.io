@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://th.bing.com/th/id/OIP.6A08IBPR8n1Kq4rzfLweFgHaD-?rs=1&pid=ImgDetMain');
+            background-size: cover;
+            background-position: center;
+            background-color: #333; /* Fallback color */
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .form-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: black;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+        .form-container a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .form-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Doctor Login Page -->
+    <div class="container" id="loginPage">
+        <div class="form-container">
+            <h2>Doctor Login</h2>
+            <form>
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter Username" required>
+                
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter Password" required>
+                
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" onclick="showRegisterPage()" title="Register here">Register here</a></p>
+        </div>
+    </div>
+
+    <!-- Doctor Register Page -->
+    <div class="container" id="registerPage" style="display: none;">
+        <div class="form-container">
+            <h2>Doctor Registration</h2>
+            <form onsubmit="return validateRegistration()">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Full Name" required>
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Email" required>
+                
+                <label for="createPassword">Password</label>
+                <input type="password" id="createPassword" placeholder="Create Password" required>
+                
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                
+                <label for="phone">Mobile Number</label>
+                <input type="tel" id="phone" placeholder="Enter Mobile Number" pattern="[0-9]{10}" required>
+                
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="#" onclick="showLoginPage()" title="Login here">Login here</a></p>
+        </div>
+    </div>
+
+    <script>
+        function showRegisterPage() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('registerPage').style.display = 'flex';
+        }
+
+        function showLoginPage() {
+            document.getElementById('registerPage').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'flex';
+        }
+
+        function validateRegistration() {
+            const password = document.getElementById('createPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+                return false;
+            }
+
+            alert("Registration successful!");
+            showLoginPage();
+            return true;
+        }
+    </script>
+</body>
+</html>
+
